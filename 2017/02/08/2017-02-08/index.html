@@ -15,12 +15,34 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="ALittleMoreEveryday">
-<meta property="og:url" content="www.derekdomo.com/tags/Bestbuy/index.html">
+<meta name="description" content="自从工作之后算是用了几种不一样的job scheduler，现在回想比较一下各种服务器，有些比较浅显的感想。不从实现细节上考虑，只从使用性角度分析。
+CronUnix自带的cron，十分方便便捷的一个工具。
+
+便于debug，便于开发，
+但是还是属于比较hack的方法，不稳定。总结一下缺点，感觉就是两点，
+一点是如果这个机器负荷太大，或者说突然down了，基本上你的job就GG了，
+还有一个就是不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Job Scheduler杂谈">
+<meta property="og:url" content="www.derekdomo.com/2017/02/08/2017-02-08/index.html">
 <meta property="og:site_name" content="ALittleMoreEveryday">
+<meta property="og:description" content="自从工作之后算是用了几种不一样的job scheduler，现在回想比较一下各种服务器，有些比较浅显的感想。不从实现细节上考虑，只从使用性角度分析。
+CronUnix自带的cron，十分方便便捷的一个工具。
+
+便于debug，便于开发，
+但是还是属于比较hack的方法，不稳定。总结一下缺点，感觉就是两点，
+一点是如果这个机器负荷太大，或者说突然down了，基本上你的job就GG了，
+还有一个就是不">
+<meta property="og:updated_time" content="2017-02-09T04:49:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ALittleMoreEveryday">
+<meta name="twitter:title" content="Job Scheduler杂谈">
+<meta name="twitter:description" content="自从工作之后算是用了几种不一样的job scheduler，现在回想比较一下各种服务器，有些比较浅显的感想。不从实现细节上考虑，只从使用性角度分析。
+CronUnix自带的cron，十分方便便捷的一个工具。
+
+便于debug，便于开发，
+但是还是属于比较hack的方法，不稳定。总结一下缺点，感觉就是两点，
+一点是如果这个机器负荷太大，或者说突然down了，基本上你的job就GG了，
+还有一个就是不">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -52,7 +74,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Tag: Bestbuy | ALittleMoreEveryday</title>
+<title>Job Scheduler杂谈 | ALittleMoreEveryday</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -62,9 +84,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
-        isTag: true,
+        isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -252,60 +274,209 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-2017-02-08" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/18/ps4-promo/" class="archive-article-date">
-      <time datetime="2016-12-19T06:48:50.000Z" itemprop="datePublished">12-18</time>
+    <div class="article-meta">
+      <a href="/2017/02/08/2017-02-08/" class="article-date">
+      <time datetime="2017-02-08T08:00:00.000Z" itemprop="datePublished">2017-02-08</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/18/ps4-promo/">PS4 羊毛(TBC)</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Job Scheduler杂谈
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/生活/">生活</a>
+    <a class="article-category-link" href="/categories/Work/">Work</a>
     </div>
 
 
-          
+        
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bestbuy/">Bestbuy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PS4/">PS4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/羊毛/">羊毛</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Work/">Work</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>自从工作之后算是用了几种不一样的job scheduler，现在回想比较一下各种服务器，有些比较浅显的感想。不从实现细节上考虑，只从使用性角度分析。</p>
+<h2 id="Cron"><a href="#Cron" class="headerlink" title="Cron"></a>Cron</h2><p>Unix自带的cron，十分方便便捷的一个工具。</p>
+<ul>
+<li>便于debug，便于开发，</li>
+<li>但是还是属于比较hack的方法，不稳定。总结一下缺点，感觉就是两点，<ul>
+<li>一点是如果这个机器负荷太大，或者说突然down了，基本上你的job就GG了，</li>
+<li>还有一个就是不太容易监控，如果job fail的话，很难去发现。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Celery"><a href="#Celery" class="headerlink" title="Celery"></a>Celery</h2><p>Celery框架里自带了一个cron功能，</p>
+<ul>
+<li>总的来说上一点提到的问题算是被解决了，因为他的工作原理和cron差不多，只不过每一个cron job就是一个celery task，所以会提交一个celery task，然后进去celery queue，被指配给一个机器去跑，所以即便出了问题，也没什么影响。</li>
+<li>但是第二个问题还存在，就是失败了，很难发现。</li>
+</ul>
+<p>我们现在用的解决办法就是每个job结束之后会emit一些metric，然后基于这个metric，我们设置一些alert。但是效果不是特别理想。组里有个比较资深的eng不是特别喜欢这种方法。</p>
+<h2 id="Airflow"><a href="#Airflow" class="headerlink" title="Airflow"></a>Airflow</h2><p>Airbnb开源的一个job scheduler，底层貌似也是celery，不太确定。</p>
+<ul>
+<li>感觉就是着重去解决第二点的，他有一个特别好看的UI，用起来也比较方便。用起来算是ok吧，不算特别复杂。</li>
+<li>但是这个有个缺点，就是pipeline的代码和scheduler的代码在一起，导致这个code base过于的大。</li>
+</ul>
+<p>总的来说是个不错scheduler，但是可能是我司的使用方法的问题，jenkins每次build，要把scheduler的code base给build一遍，这个简直太慢了，而且每个pipeline对自己的library有自己的要求，所以要求scheduler安装所有的lib，这个就把这个build变的更恐怖。你敢想象每次build都要把numpy, pandas, scipy这种级别的library分别装一遍么。</p>
+<h2 id="AWS-Lambda"><a href="#AWS-Lambda" class="headerlink" title="AWS Lambda"></a>AWS Lambda</h2><p>写着写着又想到自己实习的那个组的产品，</p>
+<ul>
+<li>这个和celery差不多，也是分布式的，有个界面，虽然界面不咋地</li>
+<li>可以上传自己的代码，和附上自己的requirement.txt。还可以版本管理，但不如git方便</li>
+<li>AWS服务友好，可以十分轻松的使用其他的服务</li>
+</ul>
+<h2 id="理想的Job-Scheduler"><a href="#理想的Job-Scheduler" class="headerlink" title="理想的Job Scheduler"></a>理想的Job Scheduler</h2>
+      
+    </div>
+    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/02/08/2017-02-08/">Job Scheduler杂谈</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">derekdomo</a></p>
+        <p><span>发布时间:</span>2017-02-08, 00:00:00</p>
+        <p><span>最后更新:</span>2017-02-08, 20:49:20</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/08/2017-02-08/" title="Job Scheduler杂谈">www.derekdomo.com/2017/02/08/2017-02-08/</a>
+            <span class="copy-path" data-clipboard-text="原文: www.derekdomo.com/2017/02/08/2017-02-08/　　作者: derekdomo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/02/07/2017-02-07/">
+                    Daily Summary Email的轮子
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cron"><span class="toc-number">1.</span> <span class="toc-text">Cron</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Celery"><span class="toc-number">2.</span> <span class="toc-text">Celery</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Airflow"><span class="toc-number">3.</span> <span class="toc-text">Airflow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AWS-Lambda"><span class="toc-number">4.</span> <span class="toc-text">AWS Lambda</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理想的Job-Scheduler"><span class="toc-number">5.</span> <span class="toc-text">理想的Job Scheduler</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
 
     
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Job Scheduler杂谈　| ALittleMoreEveryday　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
 
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2122080';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/02/07/2017-02-07/" title="下一篇: Daily Summary Email的轮子">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/2017-02-08/">Job Scheduler杂谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/2017-02-07/">Daily Summary Email的轮子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/2017-01-08/">Gaussian Process Regression</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/ps4-promo/">PS4 羊毛(TBC)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/credit-card/">Credit Card总结(TBC)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/scala-note-one/">Scala学习笔记(1)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/fallacy-micro-service/">Fallacies about Microservices</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
