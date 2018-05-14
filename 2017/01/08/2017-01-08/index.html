@@ -15,28 +15,28 @@
 
 
 
-<meta name="description" content="开一个坑，把gaussian process regression好好研究一下。
-Bayesian methods很多经典的ml model都是可以简化为下面这个问题：
+<meta name="description" content="Bayesian methods很多经典的ml model都是可以简化为下面这个问题：
 
 Given a dataset generated from some distributions
-Solve a convex optimization problem in order to find the best fi">
+Solve a convex optimization problem in order to find the best fit model for the training data
+Use the mod">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gaussian Process Regression">
 <meta property="og:url" content="www.derekdomo.com/2017/01/08/2017-01-08/index.html">
 <meta property="og:site_name" content="ALittleMoreEveryday">
-<meta property="og:description" content="开一个坑，把gaussian process regression好好研究一下。
-Bayesian methods很多经典的ml model都是可以简化为下面这个问题：
+<meta property="og:description" content="Bayesian methods很多经典的ml model都是可以简化为下面这个问题：
 
 Given a dataset generated from some distributions
-Solve a convex optimization problem in order to find the best fi">
-<meta property="og:updated_time" content="2017-01-09T03:41:57.000Z">
+Solve a convex optimization problem in order to find the best fit model for the training data
+Use the mod">
+<meta property="og:updated_time" content="2017-08-27T02:30:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gaussian Process Regression">
-<meta name="twitter:description" content="开一个坑，把gaussian process regression好好研究一下。
-Bayesian methods很多经典的ml model都是可以简化为下面这个问题：
+<meta name="twitter:description" content="Bayesian methods很多经典的ml model都是可以简化为下面这个问题：
 
 Given a dataset generated from some distributions
-Solve a convex optimization problem in order to find the best fi">
+Solve a convex optimization problem in order to find the best fit model for the training data
+Use the mod">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -148,13 +148,13 @@ Solve a convex optimization problem in order to find the best fi">
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
+                        <li>Menu</li>
+                        <li>Tags</li>
                         
-                        <li>友情链接</li>
+                        <li>Friends</li>
                         
                         
-                        <li>关于我</li>
+                        <li>About Me</li>
                         
                     </ul>
                 </div>
@@ -193,7 +193,7 @@ Solve a convex optimization problem in order to find the best fi">
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bestbuy/">Bestbuy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS4/">PS4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scala/">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Work/">Work</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新知识/">新知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/羊毛/">羊毛</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bestbuy/">Bestbuy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OKR/">OKR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS4/">PS4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Work/">Work</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新知识/">新知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/羊毛/">羊毛</a></li></ul>
                     </div>
                 </section>
                 
@@ -266,7 +266,7 @@ Solve a convex optimization problem in order to find the best fi">
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
       <div class="body-wrap"><article id="post-2017-01-08" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -312,12 +312,31 @@ Solve a convex optimization problem in order to find the best fi">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>开一个坑，把gaussian process regression好好研究一下。</p>
-<h1 id="Bayesian-methods"><a href="#Bayesian-methods" class="headerlink" title="Bayesian methods"></a>Bayesian methods</h1><p>很多经典的ml model都是可以简化为下面这个问题：</p>
+        <h1 id="Bayesian-methods"><a href="#Bayesian-methods" class="headerlink" title="Bayesian methods"></a>Bayesian methods</h1><p>很多经典的ml model都是可以简化为下面这个问题：</p>
 <ul>
 <li>Given a dataset generated from some distributions</li>
 <li>Solve a convex optimization problem in order to find the best fit model for the training data</li>
-<li>Use the model to predict<br>但是bayesian比较特殊，它不会学习出一个best fit的model，而是根据训练数据学习出新数据的后验概率。</li>
+<li>Use the model to predict<br>但是bayesian比较特殊，它不会学习出一个best fit的model，而是根据训练数据学习出新数据的后验概率。这样可以提供方法让我们去衡量模型中的不确定性，从而对未见过的新数据做出比较robust的预测。</li>
+</ul>
+<h1 id="Gaussian-Process"><a href="#Gaussian-Process" class="headerlink" title="Gaussian Process"></a>Gaussian Process</h1><h2 id="Intuitive-Explanation"><a href="#Intuitive-Explanation" class="headerlink" title="Intuitive Explanation"></a>Intuitive Explanation</h2><p>GP中比较核心的一个就是covariance matrix</p>
+<ul>
+<li>training-training cov matrix</li>
+<li>training-testing cov matrix</li>
+</ul>
+<p>100个训练数据和10个测试数据，就意味着我们有一个110维的joint gaussian distribution，我们可以通过这个100数据推出10个测试数据的条件分布。浅显的说，就是我们综合所有的训练数据，拿测试数据和他们一一比较相似性，从而得出了一个weighted average预测值。这也是为什么GP是一个Non-parametric model，这个模型记录了所有的数据，然后根据记录的这些数据来预测新数据。</p>
+<p>最早这个模型貌似适用于地质勘探的，对于一片地表，如果我们随机采样几个点，判断有没有石油（忘记是石油还是判断地质了，估计差不多吧），然后能够推测出一个新的点有没有石油。</p>
+<h2 id="Modeling-the-Cov-Matrix"><a href="#Modeling-the-Cov-Matrix" class="headerlink" title="Modeling the Cov Matrix"></a>Modeling the Cov Matrix</h2><ul>
+<li>既然是个non-parametrix model，和普通的linear regression相比，是没有什么参数可以调的，所有的都是根据cov matrix来计算出来一个条件概率得到预测值的。</li>
+<li>但是构建cov matrix中，我们是可以利用一个kernel来添加一些参数到这个模型里，来”强行调参“。</li>
+<li>在cov matrix里面，我们用kernel来计算两个点的相似度，石油开采的例子中我们可以用两个点的直线距离（欧几里得距离），我们也可以用RBF，Matern等等等。这些感觉还是需要一些经验，和实验，来判断什么样的kernel才是最适合这个模型的。举个例子，假如说你用的feature如果不是等同重要，有写很重要，有些不重要的话，那用ARD会更好一些，这样你在训练过程中，就可以把不重要的feature的lengthscale学的大一些，从而降低它的影响。</li>
+</ul>
+<h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h2><p>看了很多资料和很多lib的实现，大家的objective function都是一样的，都是那个marginal likelihood，但是具体的优化方法却不太一样，有的使用conjugate gradient。但是我自己试过这几个，感觉效果都不是很好，反而是grid search比较好，但是如果parameter太多的话，就又会比较爆炸。。<br>相较于自己实现，有几个library，比如GPy，用的是scipy的opt方法，而且效果比较好，应该是里面有些tricks我没有用到，导致了我实现的不converge。</p>
+<h2 id="Tricks-in-Implementation"><a href="#Tricks-in-Implementation" class="headerlink" title="Tricks in Implementation"></a>Tricks in Implementation</h2><p>实现的过程中发现很多tricks，可以导致效果差别特别大，或者根本就计算不了，或者特别慢。</p>
+<ul>
+<li>Log scale：除了普通的normalization，对训练数据进行log scale可以让RMSE大大提高。</li>
+<li>de-dup：在生成cov matrix时，如果有两条训练数据相同，会导致这个矩阵没有办法算inverse，所以需要去重。 </li>
+<li>Add noise：即便没有重复的，但是如果有两个点特别像，在计算的时候还是会导致无法inverse。所以需要在对角线上加noise，是这个矩阵可以inverse。</li>
+<li>Blas,blahblahblah：因为我是用scala的breeze，它底层用的是netlib。但是公司的机器里somehow部署时，既没有用ref-blas(pre-built版)，也没有native-blas，所以在计算inverse时特别的慢，这点需要注意一下，可以提升很高速度。</li>
 </ul>
 
       
@@ -327,17 +346,17 @@ Solve a convex optimization problem in order to find the best fi">
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/01/08/2017-01-08/">Gaussian Process Regression</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">derekdomo</a></p>
-        <p><span>发布时间:</span>2017-01-08, 22:40:05</p>
-        <p><span>最后更新:</span>2017-01-08, 19:41:57</p>
+        <p><span>Title:</span><a href="/2017/01/08/2017-01-08/">Gaussian Process Regression</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">derekdomo</a></p>
+        <p><span>Created:</span>2017-01-08, 22:40:05</p>
+        <p><span>Updated:</span>2017-08-26, 19:30:46</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/01/08/2017-01-08/" title="Gaussian Process Regression">www.derekdomo.com/2017/01/08/2017-01-08/</a>
-            <span class="copy-path" data-clipboard-text="原文: www.derekdomo.com/2017/01/08/2017-01-08/　　作者: derekdomo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2017/01/08/2017-01-08/" title="Gaussian Process Regression">www.derekdomo.com/2017/01/08/2017-01-08/</a>
+            <span class="copy-path" data-clipboard-text="From www.derekdomo.com/2017/01/08/2017-01-08/　　By derekdomo" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
         </p>
     </div>
 
@@ -364,9 +383,9 @@ Solve a convex optimization problem in order to find the best fi">
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
+        <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Bayesian-methods"><span class="toc-number">1.</span> <span class="toc-text">Bayesian methods</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Bayesian-methods"><span class="toc-number">1.</span> <span class="toc-text">Bayesian methods</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Gaussian-Process"><span class="toc-number">2.</span> <span class="toc-text">Gaussian Process</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Intuitive-Explanation"><span class="toc-number">2.1.</span> <span class="toc-text">Intuitive Explanation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Modeling-the-Cov-Matrix"><span class="toc-number">2.2.</span> <span class="toc-text">Modeling the Cov Matrix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Optimization"><span class="toc-number">2.3.</span> <span class="toc-text">Optimization</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tricks-in-Implementation"><span class="toc-number">2.4.</span> <span class="toc-text">Tricks in Implementation</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -380,10 +399,10 @@ Solve a convex optimization problem in order to find the best fi">
         }
     </style>
 
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
 
     <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
     </script>
 
 
@@ -436,21 +455,21 @@ Solve a convex optimization problem in order to find the best fi">
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/07/2017-02-07/" title="上一篇: Daily Summary Email的轮子">
+            <a href="/2017/02/07/2017-02-07/" title="Pre: Daily Summary Email的轮子">
                 <i class="fa fa-angle-left"></i>
             </a>
         
 
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/18/ps4-promo/" title="下一篇: PS4 羊毛(TBC)">
+            <a href="/2016/12/18/ps4-promo/" title="Next: PS4 羊毛(TBC)">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/2017-02-08/">Job Scheduler杂谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/2017-02-07/">Daily Summary Email的轮子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/2017-01-08/">Gaussian Process Regression</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/ps4-promo/">PS4 羊毛(TBC)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/credit-card/">Credit Card总结(TBC)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/scala-note-one/">Scala学习笔记(1)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/fallacy-micro-service/">Fallacies about Microservices</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/01/2017-05-01/">Weekly OKR - 05/01/2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/17/2017-04-17/">Weekly OKR - 04/17/2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/17/2017-04-26/">Weekly OKR - 04/24/2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/17/2017-04-18/">Cherami使用心得</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/2017-04-10/">Weekly OKR - 04/10/2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/2017-03-02/">纪念一个被ssh荒废的下午</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/14/2017-02-14/">Memorizing the data</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/08/2017-02-08/">Job Scheduler杂谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/2017-02-07/">Daily Summary Email的轮子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/08/2017-01-08/">Gaussian Process Regression</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/ps4-promo/">PS4 羊毛(TBC)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/credit-card/">Credit Card总结(TBC)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/fallacy-micro-service/">Fallacies about Microservices</a></li></ul>
 
 
 
@@ -464,17 +483,17 @@ Solve a convex optimization problem in order to find the best fi">
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016-2017 derekdomo
+                2016-2018 derekdomo
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -483,7 +502,7 @@ Solve a convex optimization problem in order to find the best fi">
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -529,9 +548,9 @@ ga('send', 'pageview');
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
