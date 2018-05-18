@@ -182,7 +182,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bestbuy/">Bestbuy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS4/">PS4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Work/">Work</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/找工作/">找工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新知识/">新知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/羊毛/">羊毛</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bestbuy/">Bestbuy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS4/">PS4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Terminal/">Terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Work/">Work</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/找工作/">找工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新知识/">新知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/羊毛/">羊毛</a></li></ul>
                     </div>
                 </section>
                 
@@ -258,6 +258,71 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-hyper-config" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/15/hyper-config/" class="article-date">
+      <time datetime="2017-05-16T05:00:00.000Z" itemprop="datePublished">2017-05-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/15/hyper-config/">Hyper</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>最近新发现的一个terminal叫做hyper，是用Electron那一套写的。样子看着还是挺酷的。虽然mac已经有了很好的iterm，但是还可以玩一玩。<br>有一点很吸引我的是他的插件。我现在用的好多东西都有插件系统，比如zsh，vim，tmux。唯独我现在用的iterm没有。现在hyper相当于有了这个功能，而且与其他的用起来没有什么overlap，很爽！<br>想象一下，任何可以在web上做的trick基本上都可以在terminal上可以实现，这是多爽啊~~</p>
+<p>:wq</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Productivity/">Productivity</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Terminal/">Terminal</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-leetcode-2" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -791,95 +856,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Work/">Work</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2017-01-08" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/01/08/2017-01-08/" class="article-date">
-      <time datetime="2017-01-09T06:40:05.000Z" itemprop="datePublished">2017-01-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/08/2017-01-08/">Gaussian Process Regression</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="Bayesian-methods"><a href="#Bayesian-methods" class="headerlink" title="Bayesian methods"></a>Bayesian methods</h1><p>很多经典的ml model都是可以简化为下面这个问题：</p>
-<ul>
-<li>Given a dataset generated from some distributions</li>
-<li>Solve a convex optimization problem in order to find the best fit model for the training data</li>
-<li>Use the model to predict<br>但是bayesian比较特殊，它不会学习出一个best fit的model，而是根据训练数据学习出新数据的后验概率。这样可以提供方法让我们去衡量模型中的不确定性，从而对未见过的新数据做出比较robust的预测。</li>
-</ul>
-<h1 id="Gaussian-Process"><a href="#Gaussian-Process" class="headerlink" title="Gaussian Process"></a>Gaussian Process</h1><h2 id="Intuitive-Explanation"><a href="#Intuitive-Explanation" class="headerlink" title="Intuitive Explanation"></a>Intuitive Explanation</h2><p>GP中比较核心的一个就是covariance matrix</p>
-<ul>
-<li>training-training cov matrix</li>
-<li>training-testing cov matrix</li>
-</ul>
-<p>100个训练数据和10个测试数据，就意味着我们有一个110维的joint gaussian distribution，我们可以通过这个100数据推出10个测试数据的条件分布。浅显的说，就是我们综合所有的训练数据，拿测试数据和他们一一比较相似性，从而得出了一个weighted average预测值。这也是为什么GP是一个Non-parametric model，这个模型记录了所有的数据，然后根据记录的这些数据来预测新数据。</p>
-<p>最早这个模型貌似适用于地质勘探的，对于一片地表，如果我们随机采样几个点，判断有没有石油（忘记是石油还是判断地质了，估计差不多吧），然后能够推测出一个新的点有没有石油。</p>
-<h2 id="Modeling-the-Cov-Matrix"><a href="#Modeling-the-Cov-Matrix" class="headerlink" title="Modeling the Cov Matrix"></a>Modeling the Cov Matrix</h2><ul>
-<li>既然是个non-parametrix model，和普通的linear regression相比，是没有什么参数可以调的，所有的都是根据cov matrix来计算出来一个条件概率得到预测值的。</li>
-<li>但是构建cov matrix中，我们是可以利用一个kernel来添加一些参数到这个模型里，来”强行调参“。</li>
-<li>在cov matrix里面，我们用kernel来计算两个点的相似度，石油开采的例子中我们可以用两个点的直线距离（欧几里得距离），我们也可以用RBF，Matern等等等。这些感觉还是需要一些经验，和实验，来判断什么样的kernel才是最适合这个模型的。举个例子，假如说你用的feature如果不是等同重要，有写很重要，有些不重要的话，那用ARD会更好一些，这样你在训练过程中，就可以把不重要的feature的lengthscale学的大一些，从而降低它的影响。</li>
-</ul>
-<h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h2><p>看了很多资料和很多lib的实现，大家的objective function都是一样的，都是那个marginal likelihood，但是具体的优化方法却不太一样，有的使用conjugate gradient。但是我自己试过这几个，感觉效果都不是很好，反而是grid search比较好，但是如果parameter太多的话，就又会比较爆炸。。<br>相较于自己实现，有几个library，比如GPy，用的是scipy的opt方法，而且效果比较好，应该是里面有些tricks我没有用到，导致了我实现的不converge。</p>
-<h2 id="Tricks-in-Implementation"><a href="#Tricks-in-Implementation" class="headerlink" title="Tricks in Implementation"></a>Tricks in Implementation</h2><p>实现的过程中发现很多tricks，可以导致效果差别特别大，或者根本就计算不了，或者特别慢。</p>
-<ul>
-<li>Log scale：除了普通的normalization，对训练数据进行log scale可以让RMSE大大提高。</li>
-<li>de-dup：在生成cov matrix时，如果有两条训练数据相同，会导致这个矩阵没有办法算inverse，所以需要去重。 </li>
-<li>Add noise：即便没有重复的，但是如果有两个点特别像，在计算的时候还是会导致无法inverse。所以需要在对角线上加noise，是这个矩阵可以inverse。</li>
-<li>Blas,blahblahblah：因为我是用scala的breeze，它底层用的是netlib。但是公司的机器里somehow部署时，既没有用ref-blas(pre-built版)，也没有native-blas，所以在计算inverse时特别的慢，这点需要注意一下，可以提升很高速度。</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/DataScience/">DataScience</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/新知识/">新知识</a></li></ul>
     </div>
 
       
